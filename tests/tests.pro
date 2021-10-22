@@ -16,7 +16,7 @@ HEADERS +=  \
     test_startGame.h \
     ../app/helper.h
 
-SOURCES +=     main.cpp \
-    ../app/helper.h
+SOURCES += main.cpp \
+    ../app/helper.cpp
 
 INCLUDEPATH += ../app
