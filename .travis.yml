@@ -12,18 +12,22 @@ before_install:
 addons:
   sonarcloud:
     organization: "kylakovalexey"
-    secure: "9bee102974c53420b43f375330f0c9dcf255ba7d"
+   token: &SONAR_TOKEN
 
 script:
+# Prepare the build system
   - qmake
   - make
   - ./tests/tests
+  # Wraps the compilation with the Build Wrapper to generate configuration (used
+  # later by the SonarQube Scanner) into the "bw-output" folder
+  - build-wrapper-linux-x86-64 --out-dir bw-output make clean all
+  # And finally run the SonarQube analysis - read the "sonar-project.properties"
+  # file to see the specific configuration
+  - sonar-scanner -Dsonar.cfamily.cache.enabled=true -Dsonar.cfamily.cache.path=${TRAVIS_HOME}/.cfamily -Dsonar.cfamily.threads=${NUMBER_OF_PROCESSORS}
 
 after_success:
-  - make clean
   - coveralls --root . -E ".*external.*" -E ".*tests.*"
-  - build-wrapper-linux-x86-64 --out-dir bw-output make clean all
-  - sonar-scanner -Dsonar.cfamily.build-wrapper-output=bw-output
 
 cache:
   directories:
