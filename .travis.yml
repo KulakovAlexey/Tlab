@@ -12,7 +12,7 @@ before_install:
 addons:
   sonarcloud:
     organization: "kylakovalexey"
-    token: $SONAR_TOKEN
+    secure: "9bee102974c53420b43f375330f0c9dcf255ba7d"
 
 script:
   - qmake
