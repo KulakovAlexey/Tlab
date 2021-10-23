@@ -12,7 +12,7 @@ before_install:
     
 addons:
     sonarcloud:
-        organization: "kulakovalexey"
+        organization: "tlab"
     token: &SONAR_TOKEN
     
 script:
