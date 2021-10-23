@@ -153,7 +153,7 @@ Helper::Helper(QObject *parent) : QObject(parent)
 bool Helper::checkWin(QVector<int> configs, int lvl) {
     QVector<int> final = finalconfig[lvl];
     auto it = final.begin();
-    for (int i = 0; i < configs.lenght(); i++) {
+    for (int i = 0; i < configs.length(); i++) {
         if (configs[i] != 3){
             if (*it == 1 && configs[i] != 1) return false;
             else {
