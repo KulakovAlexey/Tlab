@@ -13,7 +13,8 @@ before_install:
 addons:
     sonarcloud:
         organization: "tlab"
-    token: &SONAR_TOKEN
+    token:
+    secure: &SONAR_TOKEN
     
 script:
     - qmake 
